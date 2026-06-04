@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Konversi Suhu</title>
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				margin: 20px auto;
+				background-color: rgb(215, 230, 252);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 10px;
+			}
+			.form-convert {
+				display: flex;
+				width: 300px;
+				height: 200px;
+				flex-direction: column;
+				justify-content: center;
+				align-items: start;
+				gap: 10px;
+				border: 1px solid gray;
+				background-color: rgb(248, 248, 248);
+				padding: 20px;
+			}
+			h1 {
+				text-align: center;
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 600;
+			}
+			.form-convert > button {
+				border-radius: 5px;
+				border: 1px solid gray;
+				padding: 5px;
+				background-color: rgb(215, 230, 252);
+				width: 100%;
+				cursor: pointer;
+				justify-content: center;
+			}
+			.form-convert input {
+				width: 96%;
+				border-radius: 5px;
+				border: 1px solid gray;
+				padding: 5px;
+			}
+			.form-convert label {
+				font-size: 12px;
+				line-height: 16px;
+				font-weight: 400;
+			}
+			.form-convert > div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.form-convert > div > p {
+				font-size: 12px;
+				line-height: 16px;
+				font-weight: 400;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="converter">
+			<div class="form-convert">
+				<h1>Program Konversi Suhu</h1>
+				<label for="">Masukan suhu dalam Celcius</label>
+				<input
+					type="number"
+					id="celcius"
+					name="celcius" />
+				<button
+					type="submit"
+					name="submit"
+					value="Submit">
+					Konversi
+				</button>
+				<div>
+					<p id="fahrenheit"></p>
+				</div>
+			</div>
+		</form>
+
+		<script>
+			function konversiSuhu(celcius) {
+				return {
+					fahrenheit: (9 / 5) * celcius + 32,
+				};
+			}
+			const form = document.getElementById("converter");
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				const celcius = form.celcius.value;
+				const result = konversiSuhu(celcius);
+				console.log(result);
+				document.getElementById("fahrenheit").innerHTML = `${celcius} Celcius = ${result.fahrenheit} Fahrenheit`;
+			});
+		</script>
+	</body>
+</html>
